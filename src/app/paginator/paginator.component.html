@@ -5,9 +5,9 @@
   <li [ngClass]="paginador.first? 'disabled page-item': 'page-item'">
     <a class="page-link" [routerLink]="['/clientes/page', 0]">Primera</a>
   </li>
-  <li class="page-item" *ngFor="let pagina of paginas" [ngClass]="pagina-1 == paginador.number? 'active':''">
+  <li *ngFor="let pagina of paginas" [ngClass]="pagina-1 == paginador.number? 'page-item active':'page-item'">
     <span class="page-link" *ngIf="pagina-1 == paginador.number">{{pagina}}</span>
-    <a class="page-link" [routerLink]="['/clientes/page', pagina-1]">{{pagina}}</a>
+    <a *ngIf="pagina-1 != paginador.number" class="page-link" [routerLink]="['/clientes/page', pagina-1]">{{pagina}}</a>
   </li>
     <li [ngClass]="paginador.last? 'disabled page-item': 'page-item'">
     <a class="page-link" [routerLink]="['/clientes/page', paginador.totalPages-1]">Ultima</a>
